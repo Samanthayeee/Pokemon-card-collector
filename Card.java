@@ -4,7 +4,7 @@ import ecs100.*;
  * A pokemon card list which contain the name, value and image 
  *
  * @author Samantha yee
- * @version 1; 18/05/2022
+ * @version 2
  */
 public class Card
 {
@@ -25,6 +25,10 @@ public class Card
     private double bottom;
     /**
      * Constructor for objects of class card
+     * @param key for cards
+     * @param val for cards
+     * @param nm for cards
+     * @param img for cards
      */
     public Card(int key, String nm, int val, String img )
     {
@@ -32,8 +36,10 @@ public class Card
         name = nm;
         value = val;
         if (img == null) {
-            this.image = DEFAULT_IMAGE;     // add default img if user clicks cancel
-        } else {
+            // add default img if user clicks cancel
+            this.image = DEFAULT_IMAGE;     
+        } 
+        else {
             this.image = img;
         }
         
@@ -42,8 +48,11 @@ public class Card
     /**
      * Constructor overloading
      * Set default image to obj
+     * @param key for cards
+     * @param nm for cards
+     * @param val for cards
      */ 
-    public Card  (int key,String nm, int val)
+    public Card  (int key, String nm, int val)
     {
           this(key, nm, val, DEFAULT_IMAGE);
     }
@@ -62,6 +71,7 @@ public class Card
     
     /**
      * Getter for id
+     * @return id for cards
      */
     public int getId() {
         return this.id;
@@ -69,6 +79,7 @@ public class Card
     
     /**
      * Getter for name
+     * @return name for cards
      */
     public String getName() {
         return this.name;
@@ -76,6 +87,7 @@ public class Card
     
     /**
     * Getter for value
+    * @return value for cards
     */
     public int getValue() {
         return this.value;
@@ -85,7 +97,7 @@ public class Card
     /** 
      * erase a rectangle around the current object
      */
-    public void erase(){
+    public void erase() {
         UI.clearText();
         UI.clearGraphics();    
     }
