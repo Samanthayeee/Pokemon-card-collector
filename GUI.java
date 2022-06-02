@@ -3,7 +3,7 @@ import ecs100.*;
  * Gui to construct action.
  *
  * @author Samantha yee
- * @version 2
+ * @version 3
  */
 public class GUI
 {
@@ -38,34 +38,40 @@ public class GUI
         int value;
 
         // Ask the user for details
-        String name = UI.askString("Card Name: ");
-        
-
-        // Check boundaries for the number of cards added
-        do {
-            value = UI.askInt("Monetary value: ");
-            if ((value > 0) && (value <= MAX_QUANTITY)) 
-            {
-                UI.println("Added");
-            } 
-            else if (value > MAX_QUANTITY) 
-            {
-                UI.println("Must be less than 999999999");
-            } 
-            else if (value < 0) {
-                UI.println("Must be greater than 0");
-            } 
-            else {
-                UI.println("Must be a number!");
-            }
-        } while (0 >= value || value > MAX_QUANTITY);
-
-        // add a card image for display in the GUI
-        String imgFileName = UIFileChooser.open("Choose Image File: ");
-        // Increment the card ID count and add to hashmap
-        cards.setCardId();  // increment the id by 1
-        cards.addCard(name, value, imgFileName);
+        String name = UI.askString("Card Name: ").toLowerCase();
+        if (name.equals ("")) {
+           UI.println("That is not a valid input");
+           addCard();
+        } 
+   
+        else{
+            // Check boundaries for the number of cards added
+            do {
+                value = UI.askInt("Monetary value: ");
+                if ((value > 0) && (value <= MAX_QUANTITY)) 
+                {
+                    UI.println("Added");
+                } 
+                else if (value > MAX_QUANTITY) 
+                {
+                    UI.println("Must be less than 999999999");
+                } 
+                else if (value < 0) {
+                    UI.println("Must be greater than 0");
+                } 
+                else {
+                    UI.println("Must be a number!");
+                }
+            } while (0 >= value || value > MAX_QUANTITY);
+    
+            // add a card image for display in the GUI
+            String imgFileName = UIFileChooser.open("Choose Image File: ");
+            // Increment the card ID count and add to hashmap
+            cards.setCardId();  // increment the id by 1
+            cards.addCard(name, value, imgFileName);
+        }
     }
+   
     
     /**
      * Finds book based on name
