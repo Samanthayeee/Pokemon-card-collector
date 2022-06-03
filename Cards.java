@@ -6,7 +6,7 @@ import ecs100.*;
  * lbirary aswell as seeing monetary value 
  * 
  * @author Samantha yee 
- * @version 2
+ * @version 3
  */
 public class Cards
 {

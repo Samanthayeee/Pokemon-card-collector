@@ -1,23 +1,22 @@
 import ecs100.*;
-/**
+ /**
  * Gui to construct action.
  *
  * @author Samantha yee
- * @version 3
+ * @version 4
  */
-public class GUI
-{
+ public class GUI
+ {
     // instance variables
     private Cards cards;        // declare card instance
     private Card card;          // declare card instance
-
     /**
      * Constructor for objects of class GUI
      */
     public GUI()
     {
        // initialise instance variables
-        cards = new Cards();      // instantiate the card object
+        cards = new Cards();     // instantiate the card object
         UI.initialise();
         UI.addButton("Print All", cards::printAll);
         UI.addButton("Add", this::addCard);
@@ -68,7 +67,7 @@ public class GUI
             String imgFileName = UIFileChooser.open("Choose Image File: ");
             // Increment the card ID count and add to hashmap
             cards.setCardId();  // increment the id by 1
-            cards.addCard(name, value, imgFileName);
+            cards.addCard(name, value, imgFileName );
         }
     }
    
@@ -101,9 +100,13 @@ public class GUI
      * select object based on where the user clicks
      */
     private void doMouse(String action, double x, double y) {
-        if (action.equals ("clicked")) {
-            // if check the loc of the x and y against loc of obj
-            card.erase();
+        if (action.equals("clicked")) {
+            // if check the loc of the x and y against loc of the obj
+            if ( x >= card.getLeft() && (x <= card.getRight()) &&
+                 y >= card.getTop() && y<= card.getBottom()) {
+                   card.erase();
+                }
+            }
         }
     }
-}
+
